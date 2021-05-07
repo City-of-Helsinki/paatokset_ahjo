@@ -1,0 +1,55 @@
+paatokset_issue.settings:
+  title: Settings
+  route_name: paatokset_issue.settings
+  base_route: paatokset_issue.settings
+entity.paatokset_issue.view:
+  title: View
+  route_name: entity.paatokset_issue.canonical
+  base_route: entity.paatokset_issue.canonical
+entity.paatokset_issue.edit_form:
+  title: Edit
+  route_name: entity.paatokset_issue.edit_form
+  base_route: entity.paatokset_issue.canonical
+entity.paatokset_issue.delete_form:
+  title: Delete
+  route_name: entity.paatokset_issue.delete_form
+  base_route: entity.paatokset_issue.canonical
+  weight: 10
+entity.paatokset_issue.collection:
+  title: Päätökset - Issue
+  route_name: entity.paatokset_issue.collection
+  base_route: helfi_api_base.integrations
+  weight: 10
+entity.paatokset_issue.content_list:
+  title: Päätökset - Issue
+  route_name: entity.paatokset_issue.collection
+  base_route: helfi_api_base.integrations
+  weight: 10
+
+paatokset_meeting.settings:
+  title: Settings
+  route_name: paatokset_meeting.settings
+  base_route: paatokset_meeting.settings
+entity.paatokset_meeting.view:
+  title: View
+  route_name: entity.paatokset_meeting.canonical
+  base_route: entity.paatokset_meeting.canonical
+entity.paatokset_meeting.edit_form:
+  title: Edit
+  route_name: entity.paatokset_meeting.edit_form
+  base_route: entity.paatokset_meeting.canonical
+entity.paatokset_meeting.delete_form:
+  title: Delete
+  route_name: entity.paatokset_meeting.delete_form
+  base_route: entity.paatokset_meeting.canonical
+  weight: 10
+entity.paatokset_meeting.collection:
+  title: Päätökset - Issue
+  route_name: entity.paatokset_meeting.collection
+  base_route: helfi_api_base.integrations
+  weight: 10
+entity.paatokset_meeting.content_list:
+  title: Päätökset - Meeting
+  route_name: entity.paatokset_meeting.collection
+  base_route: helfi_api_base.integrations
+  weight: 10

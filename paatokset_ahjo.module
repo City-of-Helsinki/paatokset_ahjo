@@ -1,0 +1,92 @@
+<?php
+
+/**
+ * @file
+ * Contains helfi_tpr.
+ */
+
+use Drupal\Core\Render\Element;
+
+/**
+ * Implements hook_theme().
+ */
+function paatokset_ahjo_theme() {
+  return [
+    'paatokset_issue' => [
+      'render element' => 'elements',
+      'template' => 'paatokset-issue',
+    ],
+    'paatokset_meeting' => [
+      'render element' => 'elements',
+      'template' => 'paatokset-meeting',
+    ]
+  ];
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function paatokset_ahjo_theme_suggestions_paatokset_issue(array $variables) {
+  $suggestions = [];
+  $sanitized_view_mode = strtr($variables['elements']['#view_mode'], '.', '_');
+
+  $suggestions[] = 'paatokset_issue__' . $sanitized_view_mode;
+
+  return $suggestions;
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function paatokset_ahjo_theme_suggestions_paatokset_meeting(array $variables) {
+  $suggestions = [];
+  $sanitized_view_mode = strtr($variables['elements']['#view_mode'], '.', '_');
+
+  $suggestions[] = 'paatokset_meeting__' . $sanitized_view_mode;
+
+  return $suggestions;
+}
+
+/**
+ * Prepares variables for tpr_unit templates.
+ *
+ * Default template: paatokset-issue.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An array of elements to display in view mode.
+ */
+function template_preprocess_paatokset_issue(array &$variables) {
+  $variables['view_mode'] = $variables['elements']['#view_mode'];
+  // Helpful $content variable for templates.
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+  \Drupal::logger('my_module')->notice("MOOOI");
+  if (isset($variables['elements']['#paatokset_issue'])) {
+    $variables['entity'] = $variables['elements']['#paatokset_issue'];
+    //$variables['content'] = $variables['elements']['#paatokset_issue']->get('values')->summary;
+  }
+}
+
+/**
+ * Prepares variables for tpr_unit templates.
+ *
+ * Default template: paatokset-meeting.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An array of elements to display in view mode.
+ */
+function template_preprocess_paatokset_meeting(array &$variables) {
+  $variables['view_mode'] = $variables['elements']['#view_mode'];
+  // Helpful $content variable for templates.
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+  \Drupal::logger('my_module')->notice("MOOOI");
+  if (isset($variables['elements']['#paatokset_meeting'])) {
+    $variables['entity'] = $variables['elements']['#paatokset_issue'];
+    //$variables['content'] = $variables['elements']['#paatokset_issue']->get('values')->summary;
+  }
+}

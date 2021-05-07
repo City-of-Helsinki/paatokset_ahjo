@@ -1,0 +1,23 @@
+entity.paatokset_issue.settings:
+  title: Päätökset - Issue settings
+  description: Configure Päätökset issue entity type
+  route_name:  paatokset_issue.settings
+  parent: system.admin_structure
+
+entity.paatokset_issue.collection:
+  title: Päätökset - Issue entities
+  description: List of Issue entities
+  route_name: entity.paatokset_issue.collection
+  parent: helfi_api_base.integrations
+
+entity.paatokset_meeting.settings:
+  title: Päätökset - Meeting settings
+  description: Configure Päätökset meeting entity type
+  route_name:  paatokset_meeting.settings
+  parent: system.admin_structure
+
+entity.paatokset_meeting.collection:
+  title: Päätökset - Meeting entities
+  description: List of Meeting entities
+  route_name: entity.paatokset_meeting.collection
+  parent: helfi_api_base.integrations
