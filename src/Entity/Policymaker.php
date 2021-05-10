@@ -11,12 +11,12 @@ use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\helfi_api_base\Entity\RemoteEntityBase;
 
 /**
- * Defines the paatokset_meeting entity class.
+ * Defines the paatokset_policymaker entity class.
  *
  * @ContentEntityType(
- *   id = "paatokset_meeting",
- *   label = @Translation("Päätökset - Meeting"),
- *   label_collection = @Translation("Päätökset - Meeting"),
+ *   id = "paatokset_policymaker",
+ *   label = @Translation("Päätökset - policymaker"),
+ *   label_collection = @Translation("Päätökset - policymaker"),
  *   handlers = {
  *     "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
  *     "list_builder" = "Drupal\Core\Entity\EntityListBuilder",
@@ -30,10 +30,10 @@ use Drupal\helfi_api_base\Entity\RemoteEntityBase;
  *       "html" = "Drupal\helfi_api_base\Entity\Routing\EntityRouteProvider",
  *     }
  *   },
- *   base_table = "paatokset_meeting",
- *   data_table = "paatokset_meeting_field_data",
- *   revision_table = "paatokset_meeting_revision",
- *   revision_data_table = "paatokset_meeting_field_revision",
+ *   base_table = "paatokset_policymaker",
+ *   data_table = "paatokset_policymaker_field_data",
+ *   revision_table = "paatokset_policymaker_revision",
+ *   revision_data_table = "paatokset_policymaker_field_revision",
  *   show_revision_ui = TRUE,
  *   translatable = TRUE,
  *   admin_permission = "administer remote entities",
@@ -50,15 +50,15 @@ use Drupal\helfi_api_base\Entity\RemoteEntityBase;
  *     "revision_log_message" = "revision_log"
  *   },
  *   links = {
- *     "canonical" = "/paatokset-meeting/{paatokset_meeting}",
- *     "edit-form" = "/admin/content/integrations/paatokset-meeting/{paatokset_meeting}/edit",
- *     "delete-form" = "/admin/content/integrations/paatokset-meeting/{paatokset_meeting}/delete",
- *     "collection" = "/admin/content/integrations/paatokset-meeting"
+ *     "canonical" = "/paatokset-policymaker/{paatokset_policymaker}",
+ *     "edit-form" = "/admin/content/integrations/paatokset-policymaker/{paatokset_policymaker}/edit",
+ *     "delete-form" = "/admin/content/integrations/paatokset-policymaker/{paatokset_policymaker}/delete",
+ *     "collection" = "/admin/content/integrations/paatokset-policymaker"
  *   },
- *   field_ui_base_route = "paatokset_meeting.settings"
+ *   field_ui_base_route = "paatokset_policymaker.settings"
  * )
  */
-final class Meeting extends RemoteEntityBase {
+final class Policymaker extends RemoteEntityBase {
 
   use RevisionLogEntityTrait;
 
@@ -68,8 +68,8 @@ final class Meeting extends RemoteEntityBase {
   public static function baseFieldDefinitions(EntityTypeInterface $entity_type) {
     $fields = parent::baseFieldDefinitions($entity_type);
 
-    $fields['policymaker'] = BaseFieldDefinition::create('string')
-      ->setLabel(new TranslatableMarkup('policymaker'))
+    $fields['policymaker_name'] = BaseFieldDefinition::create('string')
+      ->setLabel(new TranslatableMarkup('policymaker_name'))
       ->setTranslatable(TRUE)
       ->setRevisionable(TRUE)
       ->setDefaultValue('')
@@ -81,8 +81,26 @@ final class Meeting extends RemoteEntityBase {
         'text_processing' => 0,
       ]);
 
-    $fields['meeting_date'] = BaseFieldDefinition::create('string')
-      ->setLabel(new TranslatableMarkup('meeting_date'))
+    $fields['department'] = BaseFieldDefinition::create('string')
+      ->setLabel(new TranslatableMarkup('department'))
+      ->setTranslatable(TRUE)
+      ->setRevisionable(TRUE)
+      ->setDefaultValue('')
+      ->setCardinality(1)
+      ->setDisplayConfigurable('view', TRUE)
+      ->setDisplayConfigurable('form', TRUE);
+
+    $fields['organization_type'] = BaseFieldDefinition::create('string')
+      ->setLabel(new TranslatableMarkup('organization_type'))
+      ->setTranslatable(TRUE)
+      ->setRevisionable(TRUE)
+      ->setDefaultValue('')
+      ->setCardinality(1)
+      ->setDisplayConfigurable('view', TRUE)
+      ->setDisplayConfigurable('form', TRUE);
+
+    $fields['resource_uri'] = BaseFieldDefinition::create('string')
+      ->setLabel(new TranslatableMarkup('resource_uri'))
       ->setTranslatable(TRUE)
       ->setRevisionable(TRUE)
       ->setDefaultValue('')

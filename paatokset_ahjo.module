@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains helfi_tpr.
+ * Contains paatokset_ahjo.
  */
 
 use Drupal\Core\Render\Element;
@@ -19,7 +19,12 @@ function paatokset_ahjo_theme() {
     'paatokset_meeting' => [
       'render element' => 'elements',
       'template' => 'paatokset-meeting',
-    ]
+    ],
+    'paatokset_policymaker' => [
+      'render element' => 'elements',
+      'template' => 'paatokset-policymaker',
+    ],
+
   ];
 }
 
@@ -43,6 +48,18 @@ function paatokset_ahjo_theme_suggestions_paatokset_meeting(array $variables) {
   $sanitized_view_mode = strtr($variables['elements']['#view_mode'], '.', '_');
 
   $suggestions[] = 'paatokset_meeting__' . $sanitized_view_mode;
+
+  return $suggestions;
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function paatokset_ahjo_theme_suggestions_paatokset_policymaker(array $variables) {
+  $suggestions = [];
+  $sanitized_view_mode = strtr($variables['elements']['#view_mode'], '.', '_');
+
+  $suggestions[] = 'paatokset_policymaker__' . $sanitized_view_mode;
 
   return $suggestions;
 }
@@ -78,15 +95,38 @@ function template_preprocess_paatokset_issue(array &$variables) {
  *   An associative array containing:
  *   - elements: An array of elements to display in view mode.
  */
-function template_preprocess_paatokset_meeting(array &$variables) {
+function template_preprocess_paatokset_meeting(array &$variables)
+{
   $variables['view_mode'] = $variables['elements']['#view_mode'];
   // Helpful $content variable for templates.
   foreach (Element::children($variables['elements']) as $key) {
     $variables['content'][$key] = $variables['elements'][$key];
   }
-  \Drupal::logger('my_module')->notice("MOOOI");
   if (isset($variables['elements']['#paatokset_meeting'])) {
-    $variables['entity'] = $variables['elements']['#paatokset_issue'];
-    //$variables['content'] = $variables['elements']['#paatokset_issue']->get('values')->summary;
+    $variables['entity'] = $variables['elements']['#paatokset_meeting'];
   }
+}
+
+  /**
+   * Prepares variables for tpr_unit templates.
+   *
+   * Default template: paatokset-policymaker.html.twig.
+   *
+   * @param array $variables
+   *   An associative array containing:
+   *   - elements: An array of elements to display in view mode.
+   */
+  function template_preprocess_paatokset_policymaker(array &$variables) {
+    \Drupal::logger('my_module')->notice("HEIP");
+
+    $variables['view_mode'] = $variables['elements']['#view_mode'];
+    // Helpful $content variable for templates.
+    foreach (Element::children($variables['elements']) as $key) {
+      $variables['content'][$key] = $variables['elements'][$key];
+    }
+    \Drupal::logger('my_module')->notice("HEIP");
+
+    if (isset($variables['elements']['#paatokset_policymaker'])) {
+      $variables['entity'] = $variables['elements']['#paatokset_policymaker'];
+    }
 }

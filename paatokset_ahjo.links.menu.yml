@@ -21,3 +21,15 @@ entity.paatokset_meeting.collection:
   description: List of Meeting entities
   route_name: entity.paatokset_meeting.collection
   parent: helfi_api_base.integrations
+
+entity.paatokset_policymaker.settings:
+  title: Päätökset - Policymaker settings
+  description: Configure Päätökset Policymaker entity type
+  route_name:  paatokset_policymaker.settings
+  parent: system.admin_structure
+
+entity.paatokset_policymaker.collection:
+  title: Päätökset - Policymaker entities
+  description: List of Policymaker entities
+  route_name: entity.paatokset_policymaker.collection
+  parent: helfi_api_base.integrations

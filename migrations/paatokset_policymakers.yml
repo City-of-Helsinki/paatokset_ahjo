@@ -4,33 +4,43 @@ dependencies:
   enforced:
     module:
       - paatokset_ahjo
-id: paatokset_meetings
+id: paatokset_policymakers
 field_plugin_method: null
 cck_plugin_method: null
 migration_tags:
   - ahjo
 migration_group: ahjo
-label: 'Päätökset - Meeting'
+label: 'Päätökset - Policymakers'
 source:
   plugin: open_ahjo
-  url: 'https://dev.hel.fi:443/paatokset/v1/meeting/'
+  url: 'https://dev.hel.fi:443/paatokset/v1/policymaker/'
   limit_pages: 1
   track_changes: true
 process:
   id: id
-  policymaker:
+  policymaker_name:
     plugin: substr
-    source: policymaker_name
+    source: name
     start: 0
     length: 255
-  meeting_date:
+  organization_type:
     plugin: substr
-    source: date
+    source: org_type
+    start: 0
+    lenght: 255
+  resource_uri:
+    plugin: substr
+    source: resource_uri
+    start: 0
+    lenght: 255
+  department:
+    plugin: substr
+    source: department
     start: 0
     lenght: 255
   langcode:
     plugin: default_value
     default_value: fi
 destination:
-  plugin: 'entity:paatokset_meeting'
+  plugin: 'entity:paatokset_policymaker'
 migration_dependencies: {  }
