@@ -40,9 +40,9 @@ use Drupal\helfi_api_base\Entity\RemoteEntityBase;
  *   entity_keys = {
  *     "id" = "id",
  *     "revision" = "revision_id",
- *     "policy_maker" = "policy_maker",
- *     "date" = "date",
-*      "number" = "number"
+ *     "langcode" = "langcode",
+ *      "uuid" = "uuid",
+ *      "uid" = "uid"
  *   },
  *   revision_metadata_keys = {
  *     "revision_created" = "revision_timestamp",
@@ -81,29 +81,14 @@ final class Meeting extends RemoteEntityBase {
         'text_processing' => 0,
       ]);
 
-    $fields['date'] = BaseFieldDefinition::create('string_long')
-      ->setLabel(new TranslatableMarkup('date'))
+    $fields['meeting_date'] = BaseFieldDefinition::create('string')
+      ->setLabel(new TranslatableMarkup('meeting_date'))
       ->setTranslatable(TRUE)
       ->setRevisionable(TRUE)
       ->setDefaultValue('')
       ->setCardinality(1)
       ->setDisplayConfigurable('view', TRUE)
-      ->setDisplayConfigurable('form', TRUE)
-      ->setSettings([
-        'text_processing' => 0,
-      ]);
-
-    $fields['number'] = BaseFieldDefinition::create('string_long')
-      ->setLabel(new TranslatableMarkup('number'))
-      ->setTranslatable(TRUE)
-      ->setRevisionable(TRUE)
-      ->setDefaultValue('')
-      ->setCardinality(1)
-      ->setDisplayConfigurable('view', TRUE)
-      ->setDisplayConfigurable('form', TRUE)
-      ->setSettings([
-        'text_processing' => 0,
-      ]);
+      ->setDisplayConfigurable('form', TRUE);
 
     return $fields;
   }

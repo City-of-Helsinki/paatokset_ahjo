@@ -4,51 +4,33 @@ dependencies:
   enforced:
     module:
       - paatokset_ahjo
-id: paatokset_issues
+id: paatokset_meetings
 field_plugin_method: null
 cck_plugin_method: null
 migration_tags:
   - ahjo
 migration_group: ahjo
-label: 'Päätökset - Issue'
+label: 'Päätökset - Meeting'
 source:
   plugin: open_ahjo
-  url: 'https://dev.hel.fi/paatokset/v1/issue/?order_by=-last_modified_time&limit=20'
+  url: 'https://dev.hel.fi:443/paatokset/v1/meeting/'
   limit_pages: 1
   track_changes: true
 process:
   id: id
-  title:
+  policy_maker:
     plugin: substr
-    source: subject
+    source: policymaker_name
     start: 0
     length: 255
-  category:
+  meeting_date:
     plugin: substr
-    source: category_name
-    start: 0
-    lenght: 255
-  summary:
-    plugin: substr
-    source: summary
-    start: 0
-    lenght: 255
-  diarynumber:
-    plugin: substr
-    source: register_id
+    source: date
     start: 0
     lenght: 255
   langcode:
     plugin: default_value
     default_value: fi
-  changed:
-    -
-      plugin: format_date
-      source: last_modified_time
-      from_format: 'Y-m-d\TH:i:s.u'
-      to_format: 'U'
-      from_timezone: 'Europe/Helsinki'
-      to_timezone: 'UTC'
 destination:
-  plugin: 'entity:paatokset_issue'
+  plugin: 'entity:paatokset_meeting'
 migration_dependencies: {  }

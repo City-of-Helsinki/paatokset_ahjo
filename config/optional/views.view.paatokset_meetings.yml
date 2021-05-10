@@ -4,12 +4,12 @@ dependencies:
   module:
     - paatokset_ahjo
     - user
-id: paatokset_issues
-label: 'Päätökset - Issues'
+id: paatokset_meetings
+label: 'Päätökset - Meetings'
 module: views
 description: ''
 tag: ''
-base_table: paatokset_issue_field_data
+base_table: paatokset_meeting_field_data
 base_field: id
 display:
   default:
@@ -71,7 +71,7 @@ display:
       fields:
         id:
           id: id
-          table: paatokset_issue_field_data
+          table: paatokset_meeting_field_data
           field: id
           relationship: none
           group_type: group
@@ -131,20 +131,20 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: paatokset_issue
+          entity_type: paatokset_meeting
           entity_field: id
           plugin_id: field
-        title:
-          table: paatokset_issue_field_data
-          field: title
-          id: title
+        policy_maker:
+          table: paatokset_meeting_field_data
+          field: policy_maker
+          id: policy_maker
           entity_type: null
-          entity_field: title
+          entity_field: policy_maker
           plugin_id: field
           relationship: none
           group_type: group
           admin_label: ''
-          label: Title
+          label: Policymaker
           exclude: false
           alter:
             alter_text: false
@@ -173,17 +173,17 @@ display:
             trim: false
             preserve_tags: ''
             html: false
-          title:
-            table: paatokset_issue_field_data
-            field: title
-            id: title
+          number:
+            table: paatokset_meeting_field_data
+            field: number
+            id: number
             entity_type: null
-            entity_field: title
+            entity_field: number
             plugin_id: field
             relationship: none
             group_type: group
             admin_label: ''
-            label: Title
+            label: Number
             exclude: false
             alter:
               alter_text: false
@@ -239,7 +239,7 @@ display:
           field_api_classes: false
         operations:
           id: operations
-          table: paatokset_issue
+          table: paatokset_meeting
           field: operations
           relationship: none
           group_type: group
@@ -286,7 +286,7 @@ display:
           empty_zero: false
           hide_alter_empty: true
           destination: false
-          entity_type: paatokset_issue
+          entity_type: paatokset_meeting
           plugin_id: entity_operations
       filters:
         combine:
@@ -332,7 +332,7 @@ display:
             title: title
           plugin_id: combine
       sorts: {  }
-      title: 'Päätökset - Issues'
+      title: 'Päätökset - Meetings'
       header: {  }
       footer:
         result:
@@ -378,7 +378,7 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: admin/content/integrations/paatokset-issue
+      path: admin/content/integrations/paatokset-meeting
     cache_metadata:
       max-age: -1
       contexts:
