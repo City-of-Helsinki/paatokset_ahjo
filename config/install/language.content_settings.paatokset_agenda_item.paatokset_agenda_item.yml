@@ -9,8 +9,8 @@ third_party_settings:
     enabled: false
     bundle_settings:
       untranslatable_fields_hide: '0'
-id: paatokset_policymaker.paatokset_policymaker
-target_entity_type_id: paatokset_policymaker
-target_bundle: paatokset_policymaker
+id: paatokset_agenda_item.paatokset_agenda_item
+target_entity_type_id: paatokset_agenda_item
+target_bundle: paatokset_agenda_item
 default_langcode: site_default
 language_alterable: false
