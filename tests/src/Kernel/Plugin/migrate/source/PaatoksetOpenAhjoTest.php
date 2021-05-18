@@ -17,7 +17,7 @@ use GuzzleHttp\Psr7\Response;
  * @coversDefaultClass \Drupal\helfi_ahjo\Plugin\migrate\source\OpenAhjo
  * @group helfi_ahjo
  */
-class OpenAhjoTest extends ApiKernelTestBase {
+class PaatoksetOpenAhjoTest extends ApiKernelTestBase {
 
   /**
    * {@inheritdoc}

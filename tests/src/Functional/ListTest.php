@@ -2,9 +2,9 @@
 
 declare(strict_types = 1);
 
-namespace Drupal\Tests\helfi_ahjo\Functional;
+namespace Drupal\Tests\paatokset_ahjo\Functional;
 
-use Drupal\Tests\helfi_ahjo\Traits\MigrateTrait;
+use Drupal\Tests\paatokset_ahjo\Traits\MigrateTrait;
 use Drupal\Tests\helfi_api_base\Functional\MigrationTestBase;
 
 /**
@@ -37,13 +37,10 @@ class ListTest extends MigrationTestBase {
     $this->drupalGet('/admin/content/integrations/paatokset-issue');
     $this->assertSession()->statusCodeEquals(403);
 
-    $this->drupalGet('/admin/content/integrations/paatokset-agenda-issues');
+    $this->drupalGet('/admin/content/integrations/paatokset-agenda-item');
     $this->assertSession()->statusCodeEquals(403);
 
-    $this->drupalGet('/admin/content/integrations/paatokset-policymaker');
-    $this->assertSession()->statusCodeEquals(403);
-
-    $this->drupalGet('/admin/content/integrations/paatokset-meeting-documents');
+    $this->drupalGet('/admin/content/integrations/paatokset-meeting-document');
     $this->assertSession()->statusCodeEquals(403);
 
     $this->drupalGet('/admin/content/integrations/paatokset-meeting');
@@ -65,38 +62,30 @@ class ListTest extends MigrationTestBase {
     // Migrate entities and make sure we can see all entities from fixture.
     $this->createIssueMigration();
     $this->drupalGet('/admin/content/integrations/paatokset-issue');
-    $this->assertSession()->pageTextContains('Displaying 1 - 20 of 40');
-    $this->assertSession()->pageTextContains('Name 1');
+    $this->assertSession()->pageTextContains('Päätökset - Issues');
 
     $this->createAgendaMigration();
-    $this->drupalGet('/admin/content/integrations/paatokset-agenda-issues');
-    $this->assertSession()->pageTextContains('Displaying 1 - 20 of 40');
-    $this->assertSession()->pageTextContains('Name 1');
+    $this->drupalGet('/admin/content/integrations/paatokset-agenda-item');
+    $this->assertSession()->pageTextContains('Päätökset - Agenda items');
 
     $this->createMeetingDocumentMigration();
-    $this->drupalGet('/admin/content/integrations/paatokset-policymaker');
-    $this->assertSession()->pageTextContains('Displaying 1 - 20 of 40');
-    $this->assertSession()->pageTextContains('Name 1');
+    $this->drupalGet('/admin/content/integrations/paatokset-meeting-document');
+    $this->assertSession()->pageTextContains('Päätökset - Meeting documents');
 
-    $this->createMeetingDocumentMigration();
-    $this->drupalGet('/admin/content/integrations/paatokset-meeting-documents');
-    $this->assertSession()->pageTextContains('Displaying 1 - 20 of 40');
-    $this->assertSession()->pageTextContains('Name 1');
 
     $this->createMeetingMigration();
     $this->drupalGet('/admin/content/integrations/paatokset-meeting');
-    $this->assertSession()->pageTextContains('Displaying 1 - 20 of 40');
-    $this->assertSession()->pageTextContains('Name 1');
+    $this->assertSession()->pageTextContains('Päätökset - Meeting');
 
     $this->createOrganizationsMigration();
     $this->drupalGet('/admin/content/integrations/paatokset-organization');
-    $this->assertSession()->pageTextContains('Displaying 1 - 20 of 40');
-    $this->assertSession()->pageTextContains('Name 1');
+    $this->assertSession()->pageTextContains('Päätökset - Organization');
+
 
     $this->createPolicymakersMigration();
     $this->drupalGet('/admin/content/integrations/paatokset-policymaker');
-    $this->assertSession()->pageTextContains('Displaying 1 - 20 of 40');
-    $this->assertSession()->pageTextContains('Name 1');
+    $this->assertSession()->pageTextContains('Päätökset - Policymakers');
+
   }
 
 }
