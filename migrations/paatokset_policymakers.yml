@@ -14,7 +14,6 @@ label: 'Päätökset - Policymakers'
 source:
   plugin: open_ahjo
   url: 'https://dev.hel.fi:443/paatokset/v1/policymaker/'
-  limit_pages: 1
   track_changes: true
 process:
   id: id

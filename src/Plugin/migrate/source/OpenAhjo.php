@@ -99,7 +99,6 @@ class OpenAhjo extends HttpSourcePluginBase implements ContainerFactoryPluginInt
    */
   protected function doCount() : int {
     $source_data = $this->getContent($this->configuration['url']);
-    \Drupal::logger('my_module')->notice($this->configuration['url']);
 
     foreach (['limit', 'offset', 'total_count'] as $key) {
       if (!isset($source_data['meta'][$key])) {
@@ -150,20 +149,22 @@ class OpenAhjo extends HttpSourcePluginBase implements ContainerFactoryPluginInt
     foreach ($this->urls as $url) {
       $content = $this->getContent($url);
 
-      foreach ($content['objects'] as $object) {
-        // Skip entire migration once we've reached the number of maximum
-        // ignored (not changed) rows.
-        // @see static::NUM_IGNORED_ROWS_BEFORE_STOPPING.
-        if ($this->isPartialMigrate() && ($this->ignoredRows >= static::NUM_IGNORED_ROWS_BEFORE_STOPPING)) {
-          break 2;
-        }
-        $processed++;
+      if (is_array($content['objects'])) {
+        foreach ($content['objects'] as $object) {
+          // Skip entire migration once we've reached the number of maximum
+          // ignored (not changed) rows.
+          // @see static::NUM_IGNORED_ROWS_BEFORE_STOPPING.
+          if ($this->isPartialMigrate() && ($this->ignoredRows >= static::NUM_IGNORED_ROWS_BEFORE_STOPPING)) {
+            break 2;
+          }
+          $processed++;
 
-        // Allow number of items to be limited by using an env variable.
-        if (($this->getLimit() > 0) && $processed > $this->getLimit()) {
-          break 2;
+          // Allow number of items to be limited by using an env variable.
+          if (($this->getLimit() > 0) && $processed > $this->getLimit()) {
+            break 2;
+          }
+          yield $object;
         }
-        yield $object;
       }
     }
   }

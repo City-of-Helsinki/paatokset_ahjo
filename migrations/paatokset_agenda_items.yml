@@ -14,7 +14,6 @@ label: 'Päätökset - Agenda Items'
 source:
   plugin: open_ahjo
   url: 'https://dev.hel.fi:443/paatokset/v1/agenda_item/'
-  limit_pages: 1
   track_changes: true
 process:
   id: id
