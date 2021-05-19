@@ -43,8 +43,7 @@ use Drupal\helfi_api_base\Entity\RemoteEntityBase;
  *     "langcode" = "langcode",
  *     "uid" = "uid",
  *     "label" = "title",
- *     "uuid" = "uuid",
-*      "summary" = "summary"
+ *     "uuid" = "uuid"
  *   },
  *   revision_metadata_keys = {
  *     "revision_created" = "revision_timestamp",
