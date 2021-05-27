@@ -2,9 +2,9 @@
 
 declare(strict_types = 1);
 
-namespace Drupal\Tests\helfi_ahjo\Kernel\Plugin\migrate\source;
+namespace Drupal\Tests\paatokset_ahjo\Kernel\Plugin\migrate\source;
 
-use Drupal\helfi_ahjo\Plugin\migrate\source\OpenAhjo;
+use Drupal\paatokset_ahjo\Plugin\migrate\source\OpenAhjo;
 use Drupal\migrate\Plugin\MigrateSourcePluginManager;
 use Drupal\migrate\Plugin\MigrationInterface;
 use Drupal\migrate\Plugin\MigrationPluginManagerInterface;
@@ -14,8 +14,8 @@ use GuzzleHttp\Psr7\Response;
 /**
  * Tests the OpenAhjo source plugin.
  *
- * @coversDefaultClass \Drupal\helfi_ahjo\Plugin\migrate\source\OpenAhjo
- * @group helfi_ahjo
+ * @coversDefaultClass \Drupal\paatokset_ahjo\Plugin\migrate\source\OpenAhjo
+ * @group paatokset_ahjo
  */
 class PaatoksetOpenAhjoTest extends ApiKernelTestBase {
 
@@ -115,8 +115,8 @@ class PaatoksetOpenAhjoTest extends ApiKernelTestBase {
     $configuration = [
       'url' => 'http://localhost/v1/issue/?order_by=-last_modified_time',
     ];
-    /** @var \Drupal\helfi_ahjo\Plugin\migrate\source\OpenAhjo $source */
-    $source = $this->sourcePluginManager->createInstance('open_ahjo', $configuration, $migration);
+    /** @var \Drupal\paatokset_ahjo\Plugin\migrate\source\OpenAhjo $source */
+    $source = $this->sourcePluginManager->createInstance('paatokset_open_ahjo', $configuration, $migration);
     $this->assertCount(60, $source);
     $this->assertEquals((string) $source, 'OpenAhjo');
     $this->assertArrayHasKey('id', $source->getIds());
