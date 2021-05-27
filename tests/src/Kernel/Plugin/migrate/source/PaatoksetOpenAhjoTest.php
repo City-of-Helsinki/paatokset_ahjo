@@ -91,7 +91,7 @@ class PaatoksetOpenAhjoTest extends ApiKernelTestBase {
   }
 
   /**
-   * Tests 'open_ahjo' source plugin.
+   * Tests 'paatokset_open_ahjo' source plugin.
    */
   public function testSourcePlugin() : void {
     $this->container->set('http_client', $this->createMockHttpClient([
@@ -102,7 +102,7 @@ class PaatoksetOpenAhjoTest extends ApiKernelTestBase {
 
     $migration = $this->migrationPluginManager->createStubMigration([
       'source' => [
-        'plugin' => 'open_ahjo',
+        'plugin' => 'paatokset_open_ahjo',
         'track_changes' => 'true',
         'url' => 'http://localhost/v1/issue/?order_by=-last_modified_time',
       ],
