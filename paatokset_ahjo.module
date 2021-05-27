@@ -114,7 +114,7 @@ function paatokset_ahjo_theme_suggestions_paatokset_agenda_item(array $variables
 }
 
 /**
- * Prepares variables for tpr_unit templates.
+ * Prepares variables for paatokset_ahjo templates.
  *
  * Default template: paatokset-issue.html.twig.
  *
@@ -134,7 +134,7 @@ function template_preprocess_paatokset_issue(array &$variables) {
 }
 
 /**
- * Prepares variables for tpr_unit templates.
+ * Prepares variables for paatokset_ahjo templates.
  *
  * Default template: paatokset-meeting.html.twig.
  *
@@ -154,28 +154,28 @@ function template_preprocess_paatokset_meeting(array &$variables)
   }
 }
 
-  /**
-   * Prepares variables for tpr_unit templates.
-   *
-   * Default template: paatokset-policymaker.html.twig.
-   *
-   * @param array $variables
-   *   An associative array containing:
-   *   - elements: An array of elements to display in view mode.
-   */
-  function template_preprocess_paatokset_policymaker(array &$variables) {
-    $variables['view_mode'] = $variables['elements']['#view_mode'];
-    // Helpful $content variable for templates.
-    foreach (Element::children($variables['elements']) as $key) {
-      $variables['content'][$key] = $variables['elements'][$key];
-    }
-    if (isset($variables['elements']['#paatokset_policymaker'])) {
-      $variables['entity'] = $variables['elements']['#paatokset_policymaker'];
-    }
+/**
+ * Prepares variables for paatokset_ahjo templates.
+ *
+ * Default template: paatokset-policymaker.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An array of elements to display in view mode.
+ */
+function template_preprocess_paatokset_policymaker(array &$variables) {
+  $variables['view_mode'] = $variables['elements']['#view_mode'];
+  // Helpful $content variable for templates.
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+  if (isset($variables['elements']['#paatokset_policymaker'])) {
+    $variables['entity'] = $variables['elements']['#paatokset_policymaker'];
+  }
 }
 
 /**
- * Prepares variables for tpr_unit templates.
+ * Prepares variables for paatokset_ahjo templates.
  *
  * Default template: paatokset-organization.html.twig.
  *
@@ -195,7 +195,7 @@ function template_preprocess_paatokset_organization(array &$variables) {
 }
 
 /**
- * Prepares variables for tpr_unit templates.
+ * Prepares variables for paatokset_ahjo templates.
  *
  * Default template: paatokset-meeting-document.html.twig.
  *
@@ -215,7 +215,7 @@ function template_preprocess_paatokset_meeting_document(array &$variables) {
 }
 
 /**
- * Prepares variables for tpr_unit templates.
+ * Prepares variables for paatokset_ahjo templates.
  *
  * Default template: paatokset-agenda-item.html.twig.
  *
