@@ -15,7 +15,7 @@ use GuzzleHttp\ClientInterface;
  * Source plugin for retrieving data from OpenAhjo.
  *
  * @MigrateSource(
- *   id = "open_ahjo"
+ *   id = "paatokset_open_ahjo"
  * )
  */
 class OpenAhjo extends HttpSourcePluginBase implements ContainerFactoryPluginInterface {
