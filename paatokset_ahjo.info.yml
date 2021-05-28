@@ -8,3 +8,6 @@ dependencies:
   - helfi_api_base
   - content_translation
   - language
+  - path
+  - scheduler
+  - text

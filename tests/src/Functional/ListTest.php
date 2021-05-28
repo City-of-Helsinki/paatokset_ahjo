@@ -22,6 +22,8 @@ class ListTest extends MigrationTestBase {
   protected static $modules = [
     'views',
     'paatokset_ahjo',
+    'migrate',
+    'path', 'scheduler', 'text', 'link', 'menu_ui', 'node', 'image',
   ];
 
   /**

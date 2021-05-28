@@ -17,12 +17,12 @@ source:
   track_changes: true
 process:
   id: id
-  policymaker_name:
+  title:
     plugin: substr
     source: name
     start: 0
     length: 255
-  organization_type:
+  field_policymaker_long_descr:
     plugin: substr
     source: org_type
     start: 0
@@ -32,14 +32,15 @@ process:
     source: resource_uri
     start: 0
     lenght: 255
-  department:
+  field_policymaker_summary:
     plugin: substr
-    source: department
+    source: summary
     start: 0
-    lenght: 255
+    default_value: 'full_html'
   langcode:
     plugin: default_value
     default_value: fi
 destination:
-  plugin: 'entity:paatokset_policymaker'
+  plugin: entity:node
+  default_bundle: policymaker
 migration_dependencies: {  }
