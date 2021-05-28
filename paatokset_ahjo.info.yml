@@ -11,3 +11,6 @@ dependencies:
   - path
   - scheduler
   - text
+  - link
+  - menu_ui
+  - image
