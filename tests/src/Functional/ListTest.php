@@ -10,7 +10,7 @@ use Drupal\Tests\helfi_api_base\Functional\MigrationTestBase;
 /**
  * Tests entity list functionality.
  *
- * @group helfi_ahjo
+ * @group paatokset_ahjo
  */
 class ListTest extends MigrationTestBase {
 
@@ -22,6 +22,8 @@ class ListTest extends MigrationTestBase {
   protected static $modules = [
     'views',
     'paatokset_ahjo',
+    'migrate',
+    'path', 'scheduler', 'text', 'link', 'menu_ui', 'node', 'image',
   ];
 
   /**
