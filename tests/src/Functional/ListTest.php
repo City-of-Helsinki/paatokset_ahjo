@@ -10,7 +10,7 @@ use Drupal\Tests\helfi_api_base\Functional\MigrationTestBase;
 /**
  * Tests entity list functionality.
  *
- * @group helfi_ahjo
+ * @group paatokset_ahjo
  */
 class ListTest extends MigrationTestBase {
 
