@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace Drupal\Tests\paatokset_ahjo\Kernel\Plugin\migrate\source;
 
-use Drupal\paatokset_ahjo\Plugin\migrate\source\OpenAhjo;
+use Drupal\paatokset_ahjo\Plugin\migrate\source\PaatoksetOpenAhjo;
 use Drupal\migrate\Plugin\MigrateSourcePluginManager;
 use Drupal\migrate\Plugin\MigrationInterface;
 use Drupal\migrate\Plugin\MigrationPluginManagerInterface;
@@ -14,7 +14,7 @@ use GuzzleHttp\Psr7\Response;
 /**
  * Tests the OpenAhjo source plugin.
  *
- * @coversDefaultClass \Drupal\paatokset_ahjo\Plugin\migrate\source\OpenAhjo
+ * @coversDefaultClass \Drupal\paatokset_ahjo\Plugin\migrate\source\PaatoksetOpenAhjo
  * @group paatokset_ahjo
  */
 class PaatoksetOpenAhjoTest extends ApiKernelTestBase {
@@ -61,7 +61,7 @@ class PaatoksetOpenAhjoTest extends ApiKernelTestBase {
     $this->expectException(\InvalidArgumentException::class);
     $migration = $this->createMock(MigrationInterface::class);
 
-    OpenAhjo::create($this->container, [], 'json_api', [], $migration);
+    PaatoksetOpenAhjo::create($this->container, [], 'json_api', [], $migration);
   }
 
   /**
@@ -115,7 +115,7 @@ class PaatoksetOpenAhjoTest extends ApiKernelTestBase {
     $configuration = [
       'url' => 'http://localhost/v1/issue/?order_by=-last_modified_time',
     ];
-    /** @var \Drupal\paatokset_ahjo\Plugin\migrate\source\OpenAhjo $source */
+    /** @var \Drupal\paatokset_ahjo\Plugin\migrate\source\PaatoksetOpenAhjo $source */
     $source = $this->sourcePluginManager->createInstance('paatokset_open_ahjo', $configuration, $migration);
     $this->assertCount(60, $source);
     $this->assertEquals((string) $source, 'OpenAhjo');

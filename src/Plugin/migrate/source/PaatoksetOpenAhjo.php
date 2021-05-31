@@ -18,7 +18,7 @@ use GuzzleHttp\ClientInterface;
  *   id = "paatokset_open_ahjo"
  * )
  */
-class OpenAhjo extends HttpSourcePluginBase implements ContainerFactoryPluginInterface {
+class PaatoksetOpenAhjo extends HttpSourcePluginBase implements ContainerFactoryPluginInterface {
 
   use MigrateTrait;
 
