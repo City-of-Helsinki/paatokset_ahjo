@@ -51,9 +51,6 @@ class ListTest extends MigrationTestBase {
     $this->drupalGet('/admin/content/integrations/paatokset-organization');
     $this->assertSession()->statusCodeEquals(403);
 
-    $this->drupalGet('/admin/content/integrations/paatokset-policymaker');
-    $this->assertSession()->statusCodeEquals(403);
-
     // Make sure logged in user with access remote entities overview permission
     // can see the entity list.
     $account = $this->createUser([
@@ -81,10 +78,6 @@ class ListTest extends MigrationTestBase {
     $this->createOrganizationsMigration();
     $this->drupalGet('/admin/content/integrations/paatokset-organization');
     $this->assertSession()->pageTextContains('Päätökset - Organization');
-
-    $this->createPolicymakersMigration();
-    $this->drupalGet('/admin/content/integrations/paatokset-policymaker');
-    $this->assertSession()->pageTextContains('Päätökset - Policymakers');
 
   }
 
