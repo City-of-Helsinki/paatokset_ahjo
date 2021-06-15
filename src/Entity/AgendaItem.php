@@ -80,7 +80,6 @@ final class AgendaItem extends RemoteEntityBase {
         'max_length' => 255,
         'text_processing' => 0,
       ]);
-
     $fields['file_url'] = BaseFieldDefinition::create('string')
       ->setLabel(new TranslatableMarkup('file_url'))
       ->setTranslatable(TRUE)
@@ -89,7 +88,6 @@ final class AgendaItem extends RemoteEntityBase {
       ->setCardinality(1)
       ->setDisplayConfigurable('view', TRUE)
       ->setDisplayConfigurable('form', TRUE);
-
     $fields['classification_description'] = BaseFieldDefinition::create('string')
       ->setLabel(new TranslatableMarkup('classification_description'))
       ->setTranslatable(TRUE)
@@ -98,7 +96,6 @@ final class AgendaItem extends RemoteEntityBase {
       ->setCardinality(1)
       ->setDisplayConfigurable('view', TRUE)
       ->setDisplayConfigurable('form', TRUE);
-
     $fields['classification_code'] = BaseFieldDefinition::create('string')
       ->setLabel(new TranslatableMarkup('classification_code'))
       ->setTranslatable(TRUE)
@@ -147,8 +144,30 @@ final class AgendaItem extends RemoteEntityBase {
       ->setCardinality(1)
       ->setDisplayConfigurable('view', TRUE)
       ->setDisplayConfigurable('form', TRUE);
-
+    $fields['meeting_policymaker_link'] = BaseFieldDefinition::create('string')
+      ->setLabel(new TranslatableMarkup('meeting_policymaker_link'))
+      ->setTranslatable(TRUE)
+      ->setRevisionable(TRUE)
+      ->setDefaultValue('')
+      ->setCardinality(1)
+      ->setDisplayConfigurable('view', TRUE)
+      ->setDisplayConfigurable('form', TRUE);
+    $fields['meeting_date'] = BaseFieldDefinition::create('string')
+      ->setLabel(new TranslatableMarkup('meeting_date'))
+      ->setTranslatable(TRUE)
+      ->setRevisionable(TRUE)
+      ->setDefaultValue('')
+      ->setCardinality(1)
+      ->setDisplayConfigurable('view', TRUE)
+      ->setDisplayConfigurable('form', TRUE);
+    $fields['subject_resolution'] = BaseFieldDefinition::create('string')
+      ->setLabel(new TranslatableMarkup('subject_resolution'))
+      ->setTranslatable(TRUE)
+      ->setRevisionable(TRUE)
+      ->setDefaultValue('')
+      ->setCardinality(1)
+      ->setDisplayConfigurable('view', TRUE)
+      ->setDisplayConfigurable('form', TRUE);
     return $fields;
   }
-
 }
