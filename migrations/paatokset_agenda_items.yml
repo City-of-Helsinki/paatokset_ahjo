@@ -13,7 +13,7 @@ migration_group: ahjo
 label: 'Päätökset - Agenda Items'
 source:
   plugin: paatokset_open_ahjo
-  url: 'https://dev.hel.fi:443/paatokset/v1/agenda_item/'
+  url: 'https://dev.hel.fi:443/paatokset/v1/agenda_item'
   track_changes: true
 process:
   id: id
@@ -57,9 +57,25 @@ process:
     source: meeting
     index:
       - id
+  meeting_policymaker_link:
+    plugin: extract
+    source: meeting
+    index:
+      - policymaker
+  meeting_date:
+    plugin: extract
+    source: meeting
+    index:
+      - date
+  subject_resolution:
+    plugin: substr
+    source: resolution
+    start: 0
+    lenght: 255
   langcode:
     plugin: default_value
     default_value: fi
 destination:
   plugin: 'entity:paatokset_agenda_item'
 migration_dependencies: {  }
+
